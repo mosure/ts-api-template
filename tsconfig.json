@@ -1,0 +1,39 @@
+{
+    "ts-node": {
+        "files": true
+    },
+    "compilerOptions": {
+        "target": "es2020",
+        "lib": ["es2020"],
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "removeComments": true,
+        "moduleResolution": "node",
+        "outDir": ".build",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "types": ["reflect-metadata"],
+        "rootDir": "./src",
+        "baseUrl": "./src",
+        "paths": {
+            "@app/*": ["*"]
+        },
+        "resolveJsonModule": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "inlineSources": true,
+        "inlineSourceMap": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "test",
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ]
+}

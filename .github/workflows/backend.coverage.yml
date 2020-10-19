@@ -1,0 +1,26 @@
+name: Template Code Coverage
+
+on:
+    pull_request:
+        types: [labeled]
+
+jobs:
+    run_coverage:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [12.x]
+
+        steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+              node-version: ${{ matrix.node-version }}
+        - uses: actions/checkout@master
+        - run: npm ci
+        - run: npm run coverage
+        - uses: romeovs/lcov-reporter-action@v0.2.16
+          with:
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+              lcov-file: ./coverage/lcov.info

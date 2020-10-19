@@ -1,0 +1,10 @@
+elk:
+    image: sebp/elk
+    ports:
+        - "5601:5601"
+        - "9200:9200"
+        - "9056:9056"
+    environment:
+        - MAX_MAP_COUNT=262144
+    volumes:
+        - ./logstash:/etc/logstash/conf.d

@@ -1,0 +1,39 @@
+service: template-api
+package:
+    individually: true
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+    environment:
+        NODE_ENV: dev
+    region: us-west-1
+    usagePlan:
+        throttle:
+            burstLimit: 20
+            rateLimit: 10
+
+custom:
+    webpack:
+        includeModules: true
+    serverless-offline:
+        noPrependStageInUrl: true
+    customDomain:
+        autoDomain: true
+        basePath: api
+        certificateName: '*.example.com'
+        createRoute53Record: true
+        domainName: api.example.com
+        stage: ${self:provider.stage}
+
+plugins:
+    - serverless-dotenv-plugin
+    - serverless-webpack
+    - serverless-offline
+    - serverless-domain-manager
+
+functions:
+    app:
+        handler: src/index.handler
+        events:
+            - http: ANY /{any+}
