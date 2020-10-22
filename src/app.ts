@@ -1,15 +1,14 @@
 import 'reflect-metadata';
 import cors, { CorsOptions } from 'cors';
-import { Container } from 'inversify';
+import { ContainerModule, Container } from 'inversify';
 import { cleanUpMetadata , InversifyExpressServer } from 'inversify-express-utils';
 
 cleanUpMetadata();
 
 import '@app/controllers';
-import { bindings } from '@app/inversify.config';
 
 
-export default () => {
+export default (bindings: ContainerModule) => {
     const corsOptions: CorsOptions = {
         origin: ['localhost'],
         optionsSuccessStatus: 200

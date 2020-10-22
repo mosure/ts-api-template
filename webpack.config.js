@@ -32,7 +32,12 @@ module.exports = {
                             cacheDirectory: path.resolve('.webpackCache')
                         }
                     },
-                    'ts-loader'
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: './tsconfig.src.json'
+                        }
+                    }
                 ]
             }
         ]
@@ -52,5 +57,5 @@ module.exports = {
                 sourceMap: true
             })
         ]
-    },
+    }
 };

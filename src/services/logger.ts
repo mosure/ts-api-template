@@ -17,14 +17,14 @@ export const create_logger = function(settings: ISettings): ILogger {
         transports: [
             new winston.transports.Console({
                 format: winston.format.simple(),
-                silent: process.env.NODE_ENV === 'test'
+                silent: settings.testMode
             }),
             new LogstashTransport({
                 applicationName: settings.appName,
                 host: settings.loggingHost,
                 mode: 'udp',
                 port: settings.loggingPort,
-                silent: process.env.NODE_ENV === 'test',
+                silent: settings.testMode,
             })
         ]
     });

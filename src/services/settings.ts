@@ -8,6 +8,7 @@ export class Settings implements ISettings {
     appName: string;
     loggingHost: string;
     loggingPort: number;
+    testMode = false;
 
     constructor() {
         this.appName = process.env.APP_NAME || '';

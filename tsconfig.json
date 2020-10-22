@@ -16,10 +16,11 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "types": ["reflect-metadata"],
-        "rootDir": "./src",
-        "baseUrl": "./src",
+        "rootDir": "./",
+        "baseUrl": "./",
         "paths": {
-            "@app/*": ["*"]
+            "@app/*": ["./src/*"],
+            "@test/*": ["./test/*"]
         },
         "resolveJsonModule": true,
         "preserveConstEnums": true,
@@ -28,12 +29,11 @@
         "inlineSourceMap": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "test/**/*"
     ],
     "exclude": [
+        "db",
         "node_modules",
-        "test",
-        "**/*.spec.ts",
-        "**/*.test.ts"
     ]
 }
